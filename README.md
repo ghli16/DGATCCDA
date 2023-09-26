@@ -12,7 +12,9 @@ The code has been tested running under Python 3.8.0. The required packages are a
 
 ## DataSets
 1.the association represents the association matrix of circRNA and drug
+
 2.gene_seq_sim represents the similarity in sequence of circRNAs host genes
+
 3.drug_str_sim represents Structural similarity of drugs
 
 ## code

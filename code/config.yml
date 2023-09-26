@@ -1,0 +1,38 @@
+#searchSpaceFile: search_space.json
+#authorName: default
+#experimentName: example_mnist
+#
+#trainingServicePlatform: local
+#
+#trialCommand: python main.py
+#trialConcurrency: 5
+#
+#maxTrialNumber: 100
+#maxExperimentDuration: 10h
+#
+#tuner:
+#  builtinTunerName: TPE
+#  classArgs:
+#    optimize_mode: maximize
+
+authorName: default
+experimentName: example_mnist
+trialConcurrency: 5 # 根据自己的GPU个数设置trail的并发数
+maxExecDuration: 10h # 整个NNI自动调参的时间
+maxTrialNum: 10
+#choice: local, remote, pai
+trainingServicePlatform: local
+searchSpacePath: search_space.json
+
+# 上面定义的search_space.json文件
+useAnnotation: false
+tuner:
+  builtinTunerName: TPE
+  classArgs:
+    #choice: maximize, minimize
+    optimize_mode: maximize # 优化方向，向nni报告我们的结果，如果报告结果是test_acc/准确率，那optimize_mode就选maximize。如果报告结果是loss，optimize_mode就选minimize
+trial:
+  command: python main.py # 这里要改成自己运行的model文件
+  codeDir: .
+  gpuNum: 1
+
